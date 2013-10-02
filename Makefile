@@ -57,7 +57,7 @@ lib${PROJECT}.a: ${OBJECTS}
 
 lib${PROJECT}.so.${SOVERSION}: ${OBJECTS}
 	$(ECHO) LD $@
-	$(QUIET)${CC} -Wl,-soname,lib${PROJECT}.so.${SOMAJOR} -shared ${LDFLAGS} -o $@ ${OBJECTS} ${LIBS}
+	$(QUIET)${CC} -Wl,-install_name,lib${PROJECT}.so.${SOMAJOR} -shared ${LDFLAGS} -o $@ ${OBJECTS} ${LIBS}
 
 clean:
 	$(QUIET)rm -rf ${OBJECTS} ${PROJECT}-${VERSION}.tar.gz \
@@ -75,7 +75,7 @@ lib${PROJECT}-debug.a: ${DOBJECTS}
 
 lib${PROJECT}-debug.so.${SOVERSION}: ${DOBJECTS}
 	$(ECHO) LD $@
-	$(QUIET)${CC} -Wl,-soname,lib${PROJECT}.so.${SOMAJOR} -shared ${LDFLAGS} -o $@ ${DOBJECTS} ${LIBS}
+	$(QUIET)${CC} -Wl,-install_name,lib${PROJECT}.so.${SOMAJOR} -shared ${LDFLAGS} -o $@ ${DOBJECTS} ${LIBS}
 
 debug: options ${PROJECT}-debug
 
